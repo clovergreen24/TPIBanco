@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   root "users#index"
   resources :users
   resources :localities
+  resources :offices
 end
