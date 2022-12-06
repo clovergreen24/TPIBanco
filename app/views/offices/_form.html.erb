@@ -25,6 +25,12 @@
     <%= form.label :phone, style: "display: block" %>
     <%= form.text_field :phone %>
   </div>
+
+<div>
+   <%= form.label :locality %>
+   <%= form.select(:locality,options_for_select(Locality.all.map{|locality| [locality.name,locality.id]})) %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>

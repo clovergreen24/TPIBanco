@@ -3,5 +3,5 @@ class Office < ApplicationRecord
     validates :name, uniqueness: true
     validates :address, presence: true
     validates :phone, presence: true
-
+    belongs_to :locality
 end

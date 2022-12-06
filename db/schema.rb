@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_06_001808) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_021541) do
   create_table "localities", force: :cascade do |t|
     t.string "name"
     t.string "province"
@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_001808) do
     t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "locality_id"
+    t.index ["locality_id"], name: "index_offices_on_locality_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -33,4 +35,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_06_001808) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "offices", "localities"
 end
