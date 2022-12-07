@@ -3,11 +3,21 @@ class OfficesController < CrudController
       locality = Locality.find(model_params[:locality])
       @model = Office.new(name: model_params[:name], address: model_params[:address], phone: model_params[:phone], 
         locality: locality)
-      
-        if @model.save redirect_to @model, notice: "#{model_name} was successfully created"
+      byebug
+        if @model.save 
+          redirect_to @model, notice: "#{model_name} was successfully created"
         else
           render :new, status: :unprocessable_entity
         end
+    end
+
+    def update
+      locality = Locality.find(model_params[:locality])
+      if @model.update(name: model_params[:name], address: model_params[:address], phone: model_params[:phone], locality: locality)
+        redirect_to @model, notice: "#{model_name} was successfully updated."
+      else
+          render :edit, status: :unprocessable_entity
+      end
     end
 
     private 
