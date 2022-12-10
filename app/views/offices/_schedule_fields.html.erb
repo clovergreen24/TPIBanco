@@ -1,0 +1,12 @@
+<div class="nested-fields">
+<div class="form-group">
+    <%= form.hidden_field :_destroy %>
+    <%= form.label :day %>
+    <%= form.select(:day, days_for_select)%>
+    <%= form.label :start_time %>
+    <%= form.time_field :start_time%>
+    <%= form.label :end_time %>
+    <%= form.time_field :end_time%>
+    <%= link_to "Remove", "#", data: {action: "click->schedule#removeSchedule"} %>
+</div>
+</div>
