@@ -26,4 +26,14 @@ def provinces_for_select
         ["Tucumán", "Tucumán"]
     ]
     end
+
+    def days_for_select
+        [
+            ["Lunes", "Lunes"],
+            ["Martes", "Martes"],
+            ["Miércoles", "Miércoles"],
+            ["Jueves", "Jueves"],
+            ["Viernes", "Viernes"],
+        ]
+    end
 end

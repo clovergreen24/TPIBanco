@@ -19,4 +19,14 @@
     <%= office.locality.name %>
   </p>
 
+  <p>
+    <strong>Schedule:</strong>
+    
+    <% office.schedules.map do |s| %>
+      <div>
+      <%= s.day %>: <%= s.start_time.strftime("%H:%M") %> - <%= s.end_time.strftime("%H:%M") %>
+      </div>
+    <% end %>
+  </p>
+
 </div>
