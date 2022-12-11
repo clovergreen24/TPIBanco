@@ -1,0 +1,33 @@
+<%= form_with(model: appointment) do |form| %>
+  <% if appointment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+
+      <ul>
+        <% appointment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :office, style: "display: block" %>
+    <%= form.select(:office,options_for_select(Office.all.map{|office| [office.name,office.id, office.get_available_appointments]})) %>
+    <%= form.select(:office,options_for_select(Office.get_available_appointments)) %> 
+  </div>
+
+  <div>
+    <%= form.label :motive, style: "display: block" %>
+    <%= form.text_field :motive %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.datetime_select :date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

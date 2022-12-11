@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_021655) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_025334) do
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "date"
+    t.string "motive"
+    t.integer "client_id"
+    t.integer "office_id"
+    t.integer "employee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_appointments_on_client_id"
+    t.index ["employee_id"], name: "index_appointments_on_employee_id"
+    t.index ["office_id"], name: "index_appointments_on_office_id"
+  end
+
   create_table "localities", force: :cascade do |t|
     t.string "name"
     t.string "province"
@@ -43,8 +56,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_021655) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password"
+    t.string "crypted_password"
+    t.string "salt"
   end
 
+  add_foreign_key "appointments", "offices"
+  add_foreign_key "appointments", "users", column: "client_id"
+  add_foreign_key "appointments", "users", column: "employee_id"
   add_foreign_key "offices", "localities"
   add_foreign_key "schedules", "offices"
 end
